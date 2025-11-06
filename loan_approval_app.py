@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from imblearn.pipeline import Pipeline
+from imblearn.over_sampling import SMOTE
 import joblib
 import plotly.graph_objects as go
 import plotly.express as px
