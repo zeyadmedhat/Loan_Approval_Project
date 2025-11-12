@@ -204,6 +204,6 @@ Data Scientist | Machine Learning Engineer
 
 <div align="center">
 
-**Built with ❤️ by Zeyad Medhat | © 2025**
+**Developed by Zeyad Medhat | © 2025**
 
 </div>
