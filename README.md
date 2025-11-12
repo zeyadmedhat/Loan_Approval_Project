@@ -81,42 +81,6 @@ loan-approval-predictor/
 
 ---
 
-## 📊 Model Performance
-
-### Test Set Results (4,000 samples)
-
-| Metric | Score |
-|---------|--------|
-| **Accuracy** | **99.65%** |
-| **Precision** | **99.47%** |
-| **Recall** | **99.06%** |
-| **F1 Score** | **99.27%** |
-| **ROC AUC** | **99.99%** |
-
-### Training Set Results (16,000 samples)
-
-| Metric | Score |
-|---------|--------|
-| **Accuracy** | 99.59% |
-| **Precision** | 98.93% |
-| **Recall** | 99.35% |
-| **F1 Score** | 99.14% |
-
-### Confusion Matrix (Test Set)
-
-```
-                Predicted
-                 No    Yes
-Actual  No    3,039     5     → 99.84% Specificity
-        Yes      9   947     → 99.06% Sensitivity
-```
-
-**Only 14 errors out of 4,000 predictions!**
-
-📘 *Detailed metrics and visualizations are available in `Loan_Approval_Project.ipynb`.*
-
----
-
 ## 🖥️ How to Run Locally
 
 1. **Clone this repository**
@@ -232,7 +196,7 @@ This project is licensed under the **MIT License** — you're free to use, modif
 ## 👤 Author
 
 **Zeyad Medhat**  
-Data Scientist | Machine Learning Enthusiast
+Data Scientist | Machine Learning Engineer
 
 💼 [LinkedIn](https://linkedin.com/in/zeyad-medhat) | 💻 [GitHub](https://github.com/zeyadmedhat) | 📧 zeyadmedhat.official@gmail.com
 
