@@ -18,13 +18,13 @@
 This project predicts whether a **loan application will be approved or rejected** using machine learning.  
 It leverages **CatBoost** for highly accurate classification and features an **interactive Streamlit web app** for real-time predictions.
 
-Users can input applicant details such as personal information, employment status, income, credit history, and loan requirements to get instant approval predictions with **99.65% test accuracy**.
+Users can input applicant details such as personal information, employment status, income, credit history, and loan requirements to get instant approval predictions with **92.20% test accuracy**.
 
 ---
 
 ## ⚙️ Features
 
-✅ Real-time loan approval predictions with 99.65% accuracy  
+✅ Real-time loan approval predictions with 92.20% accuracy  
 ✅ Interactive web interface with 4 comprehensive sections  
 ✅ Exploratory Data Analysis with 15+ visualizations  
 ✅ 33 features analyzed per application  
