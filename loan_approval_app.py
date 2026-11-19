@@ -822,14 +822,14 @@ elif page == "🔮 Prediction":
             
             with col1:
                 age = st.number_input("Age", min_value=18, max_value=80, value=35)
-                marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
+                marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced", "Widowed"])
                 num_dependents = st.number_input("Number of Dependents", min_value=0, max_value=5, value=0)
             
             with col2:
                 education_level = st.selectbox("Education Level", 
                     ["High School", "Associate", "Bachelor", "Master", "Doctorate"])
                 home_ownership = st.selectbox("Home Ownership Status", 
-                    ["Rent", "Own", "Mortgage"])
+                    ["Rent", "Own", "Mortgage", "Other"])
             
             with col3:
                 employment_status = st.selectbox("Employment Status", 
@@ -874,7 +874,6 @@ elif page == "🔮 Prediction":
                 monthly_debt = st.number_input("Monthly Debt Payments ($)", 
                     min_value=50, max_value=3000, value=400, step=10)
                 debt_to_income = monthly_debt / (annual_income / 12) if annual_income > 0 else 0
-                total_debt_to_income = (monthly_debt * 12) / annual_income if annual_income > 0 else 0
                 
                 st.metric("Debt-to-Income Ratio", f"{debt_to_income:.2%}")
                 
@@ -884,8 +883,8 @@ elif page == "🔮 Prediction":
             with col3:
                 length_credit_history = st.number_input("Length of Credit History (years)", 
                     min_value=0, max_value=50, value=10)
-                payment_history = st.slider("Payment History Score", 
-                    min_value=0, max_value=100, value=85)
+                payment_history = st.slider("Payment History (on-time payments)", 
+                    min_value=0, max_value=50, value=24)
                 utility_bills_payment = st.slider("Utility Bills Payment History", 
                     min_value=0, max_value=100, value=90)
                 
@@ -903,7 +902,7 @@ elif page == "🔮 Prediction":
                 loan_duration = st.selectbox("Loan Duration (months)", 
                     [12, 24, 36, 48, 60, 72, 84, 96, 108, 120])
                 loan_purpose = st.selectbox("Loan Purpose", 
-                    ["Home", "Auto", "Education", "Business", "Other"])
+                    ["Home", "Auto", "Education", "Debt Consolidation", "Other"])
             
             with col2:
                 base_interest_rate = st.slider("Base Interest Rate (%)", 
@@ -947,7 +946,7 @@ elif page == "🔮 Prediction":
                 'BankruptcyHistory': [bankruptcy],
                 'LoanPurpose': [loan_purpose],
                 'PreviousLoanDefaults': [previous_defaults],
-                'PaymentHistory': [payment_history / 100],
+                'PaymentHistory': [payment_history],  # training data is a count (8-45)
                 'LengthOfCreditHistory': [length_credit_history],
                 'SavingsAccountBalance': [savings_balance],
                 'CheckingAccountBalance': [checking_balance],
@@ -957,10 +956,10 @@ elif page == "🔮 Prediction":
                 'UtilityBillsPaymentHistory': [utility_bills_payment / 100],
                 'JobTenure': [job_tenure],
                 'NetWorth': [net_worth],
-                'BaseInterestRate': [base_interest_rate],
-                'InterestRate': [interest_rate],
+                'BaseInterestRate': [base_interest_rate / 100],  # model trained on fractions, not %
+                'InterestRate': [interest_rate / 100],
                 'MonthlyLoanPayment': [monthly_payment],
-                'TotalDebtToIncomeRatio': [total_debt_to_income]
+                'TotalDebtToIncomeRatio': [(monthly_debt + monthly_payment) / monthly_income]  # same formula as training data
             })
             
             # Make prediction
